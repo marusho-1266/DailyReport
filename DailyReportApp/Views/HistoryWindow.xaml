@@ -1,0 +1,36 @@
+<Window x:Class="DailyReportApp.Views.HistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyReportApp.Views"
+        mc:Ignorable="d"
+        x:Name="HistoryWindowName"
+        Title="HistoryWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Label Content="履歴閲覧画面"/>
+            <ListBox ItemsSource="{Binding ReportDates}" SelectedItem="{Binding SelectedDate}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Date, StringFormat=yyyy/MM/dd}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <DatePicker SelectedDate="{Binding SelectedDate}"/>
+            <ListBox ItemsSource="{Binding DailyReports}" SelectionChanged="ListBox_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Date, StringFormat=yyyy/MM/dd}"/>
+                            <TextBlock Text="{Binding Tasks}"/>
+                            <TextBlock Text="{Binding Results}"/>
+                            <TextBlock Text="{Binding TomorrowPlan}"/>
+                            <TextBlock Text="{Binding MonthlyReview}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Window>

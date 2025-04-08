@@ -1,0 +1,18 @@
+<Window x:Class="DailyReportApp.Views.TemplateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyReportApp.Views"
+        mc:Ignorable="d"
+        Title="TemplateWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Label Content="テンプレート管理画面"/>
+            <ListBox ItemsSource="{Binding ReportTemplates}" SelectedItem="{Binding SelectedReportTemplate}" DisplayMemberPath="Name"/>
+            <Button Content="追加" Command="{Binding AddTemplateCommand}"/>
+            <Button Content="編集" Command="{Binding EditTemplateCommand}"/>
+            <Button Content="削除" Command="{Binding DeleteTemplateCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

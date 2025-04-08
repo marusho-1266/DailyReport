@@ -1,0 +1,72 @@
+﻿<Window x:Class="DailyReportApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyReportApp"
+        mc:Ignorable="d"
+        x:Name="MainWindowName"
+        Title="MainWindow" Height="600" Width="800"> <!-- Widthを調整しても良いでしょう -->
+    <Grid>
+        <!-- Grid.ColumnDefinitions は削除 -->
+
+        <!-- Grid.Column="0" を削除 -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <DatePicker SelectedDate="{Binding SelectedDate}" Margin="5"/>
+                <Button Content="保存" Command="{Binding SaveDailyReportCommand}" Margin="5"/>
+                <Button Content="送信" Command="{Binding SendToChatworkCommand}" Margin="5"/>
+                <Button Content="履歴" Margin="5" Click="HistoryButton_Click"/>
+                <Button Content="設定" Margin="5" Click="SettingsButton_Click"/>
+            </StackPanel>
+
+            <TabControl Grid.Row="1">
+                <TabItem Header="日報">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <Label Content="今日行ったタスク・かかった時間"/>
+                            <TextBox TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding Tasks}" Height="100"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1">
+                            <Label Content="今日の結果"/>
+                            <TextBox TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding Results}" Height="100"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2">
+                            <Label Content="明日の予定と目標"/>
+                            <TextBox TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding TomorrowPlan}" Height="100"/>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="月次振り返り">
+                    <Grid>
+                        <StackPanel>
+                            <Label Content="月次の振返り（課題点に対する対応策や改善策）"/>
+                            <TextBox TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding MonthlyReview}" Height="100"/>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+            <StatusBar Grid.Row="2">
+                <StatusBarItem Content="ステータス"/>
+            </StatusBar>
+        </Grid>
+
+        <!-- サイドバー (<Border Grid.Column="1" ...>) は削除 -->
+
+    </Grid>
+</Window>
