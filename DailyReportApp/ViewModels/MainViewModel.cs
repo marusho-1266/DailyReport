@@ -158,7 +158,7 @@ namespace DailyReportApp.ViewModels
             var chatworkService = new ChatworkService(apiKey, roomId);
 
             // メッセージを作成
-            string message = $"【今日行ったタスク・かかった時間】\n{Tasks}\n\n【今日の結果】\n{Results}\n\n【明日の予定と目標】\n{TomorrowPlan}";
+            string message = $"1. 今日行ったタスク・かかった時間	◆日報必須◆\n{Tasks}\n\n2. 今日の結果		◆日報必須◆\n{Results}\n\n3. 明日の予定と目標		◆日報必須◆\n{TomorrowPlan}";
 
             // メッセージを送信
             bool isSuccess = await chatworkService.SendMessage(message);
